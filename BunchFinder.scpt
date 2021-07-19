@@ -3,6 +3,15 @@
 on run args
     set bunchName to system attribute "BUNCH"
     set bunchDir to system attribute "BUNCH_DIR"
+    set bunchPhase to system attribute "BUNCH_PHASE"
+
+    if bunchPhase is "CLOSE" then
+        return
+    end if
+
+    if character -1 of bunchDir is not "/" then
+        set bunchDir to bunchDir & "/"
+    end if
 
     -- Set up source file path
     set bunchFinderFileName to bunchName & ".bunchfinder"
